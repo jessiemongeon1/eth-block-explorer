@@ -1,4 +1,4 @@
-import EvmRpc "canister:evm_rpc";
+import EvmRpc "ic:7hfb6-caaaa-aaaar-qadga-cai";
 
 import Debug "mo:base/Debug";
 import Cycles "mo:base/ExperimentalCycles";
@@ -9,10 +9,10 @@ actor {
   public func getLatestEthereumBlock() : async EvmRpc.Block {
 
     // Select RPC services
-    let services : EvmRpc.RpcServices = #EthMainnet(?[#Cloudflare]);
+    let services : EvmRpc.RpcServices = #EthMainnet(?[#PublicNode]);
 
     // Call `eth_getBlockByNumber` RPC method (unused cycles will be refunded)
-    Cycles.add<system>(1000000000);
+    Cycles.add<system>(2000000000);
     let result = await EvmRpc.eth_getBlockByNumber(services, null, #Latest);
 
     switch result {

@@ -1,8 +1,4 @@
 import './App.scss';
-import motokoLogo from './assets/motoko_moving.png';
-import motokoShadowLogo from './assets/motoko_shadow.png';
-import reactLogo from './assets/react.svg';
-import ethLogo from './assets/eth.svg';
 
 // JSON viewer component
 import { JsonView, allExpanded, defaultStyles } from 'react-json-view-lite';
@@ -16,34 +12,23 @@ function App() {
 
   return (
     <div className="App">
+      <h1 style={{ paddingLeft: 36 }}>ETH Block Explorer</h1>
       <div>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <a
-          href="https://github.com/internet-computer-protocol/evm-rpc-canister#readme"
-          target="_blank"
-        >
-          <img src={ethLogo} className="logo ethereum" alt="Ethereum logo" />
-        </a>
-        <a
-          href="https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/"
-          target="_blank"
-        >
-          <span className="logo-stack">
-            <img
-              src={motokoShadowLogo}
-              className="logo motoko-shadow"
-              alt="Motoko logo"
-            />
-            <img src={motokoLogo} className="logo motoko" alt="Motoko logo" />
-          </span>
-        </a>
-      </div>
-      <h1 style={{ paddingLeft: 36 }}>React + EVM RPC + Motoko</h1>
+                <div>
+                    <div className="p-8 space-y-6">
+                        <p className="text-gray-600 leading-relaxed">
+                            This project shows how an ICP smart contract can query data directly from Ethereum without using a bridge or oracle.
+                        </p>
+                        <h3 className="text-xl font-semibold">Key Features:</h3>
+                        <ul className="space-y-3">A React frontend and Motoko-based backend fully deployed on ICP.</ul>
+                        <ul className="space-y-3">A direct call to the Ethereum network using HTTPS outcalls.</ul>
+                        <ul className="space-y-3">A frontend that displays the latest Ethereum block details.</ul>
+                    </div>
+                </div>
+        </div>
       <div className="card" style={{ opacity: loading ? 0.5 : 1 }}>
         <button onClick={call} disabled={loading}>
-          Get latest block
+          Get the latest Ethereum block
         </button>
         {!!data && (
           <pre className="json-view">
@@ -62,7 +47,6 @@ function App() {
         {!!loading && !data && !error && <div className="loader" />}
       </div>
       <p className="read-the-docs">
-        Click on the React, Motoko, and Ethereum logos to learn more
       </p>
     </div>
   );
